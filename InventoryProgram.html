@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Noi Inventory Management</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="InventoryProgram.css" />
+<!--
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="lib/jasmine-3.5.0/jasmine_favicon.png"
+    />
+    <link rel="stylesheet" href="lib/jasmine-3.5.0/jasmine.css" />
+
+    <script src="lib/jasmine-3.5.0/jasmine.js"></script>
+    <script src="lib/jasmine-3.5.0/jasmine-html.js"></script>
+    <script src="lib/jasmine-3.5.0/boot.js"></script>
+
+    <script src="InventoryProgram.spec.js"></script>
+-->
+  </head>
+
+  <body>
+    <div class="container">
+      <h3>Noi Downtown Inventory Program</h3>
+ <!-- Form Add Item-->     
+      <form id="all-add-form" action="">
+
+        <div class="form-group">
+          <input class="btn btn-primary" type='button' value="Add Item" id="add_item"/>
+        </div>
+
+        <div class="form-group hidden" id="form-add-item">
+          <label for="brand-name">Name</label>
+          <input
+            id="brand-name"
+            class="form-control validate-input"
+            type="text"
+            name="brand-name"
+            required
+            />
+
+          <label for="type-item">Type of Item</label>
+          <select class="form-control" name="type-item" id="type-item">
+            <option value="choose" selected="selected" disabled>
+              Choose one
+            </option>
+            <option value="non-alcohol">Non Alcoholic</option>
+            <option value="beer">Beer</option>
+            <option value="wine">Wine</option>
+            <option value="liquor">Liquor</option>
+          </select>
+
+          <label for="supplier-name">Supplier Name</label>
+          <input
+            id="supplier-name"
+            class="form-control validate-input"
+            type="text"
+            name="supplier-name"
+            required
+          />
+          <br>
+          <div class="'form-group" id="form-contact-sup">
+            <p>Supplier Contact By</p>
+            <input
+              class="form-check-input "
+              type="checkbox"
+               name="box email"
+               id="box-email"
+            />
+            <label class="form-check-label" for="e-mail"
+              >E-mail
+            </label>
+            <input
+              id="supplier-email"
+              class="form-control validate-input hidden"
+              type="email"
+              name="supplier-email"
+            />
+            <br>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="box phone number"
+              id="box-phone-number"
+            />
+            <label class="form-check-label" for="phone number"
+              >Phone Number
+            </label>
+            <input
+              id="supplier-number"
+              class="form-control validate-input hidden"
+              type="number"
+              name="supplier-number"
+            />
+            <br>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="box-web-site"
+              id="box-web-site"
+            />
+            <label class="form-check-label" for="web-site"
+              >Web-site
+            </label>
+            <input
+              id="supplier-web"
+              class="form-control validate-input hidden"
+              type="url"
+              name="supplier-web"
+            />
+          </div>
+          <br>
+          <label for="stock-number">How many stock do you have?</label>
+          <input
+            id="stock-number"
+            class="form-control validate-input"
+            type="number"
+            name="stock-number"
+            required
+            />
+          <br>
+          <label for="setpoint">Set-point for warning</label>
+          <input
+            id="set-point"
+            class=""
+            type="number"
+            name="set-point"
+            />
+          <br>
+          <div class="form-group">
+            <input class="btn btn-secondary" type="submit" value="Add" id="add_submit"/>
+          </div>
+
+          <small class="error" aria-live="polite"></small>
+        </div>
+      </form>
+<!---->
+<!-- Form Search Item-->
+      <form>
+        <div class="form-group ">
+          <input class="btn btn-primary" type='button' value="Search Item" id="search-item"/>
+        </div>
+
+        <div class="form-group hidden" id="form-search-item">
+          <label for="brand-name">Name</label>
+          <input
+            id="search-brand-name"
+            class="form-control validate-input"
+            type="text"
+            name="brand-name"
+          />
+          <br>
+          <div class="">
+            <input class="btn btn-secondary" type='button' value="Search" id="search"/>
+          </div>
+          
+          <small class="error" aria-live="polite"></small>
+        </div>
+      </form>
+<!---->
+      <div class="" id="search-item-list">
+        <h5>List of Search Items</h5>
+        <table style="width: 100%;" id="table-search-item">
+          <tr>
+            <th style="width: 30%;">Name</th>
+            <th style="width: 5%">Stock</th>
+            <th style="width: 10%">Type</th>
+            <th style="width: 20%">Supplier</th>
+            <th style="width: 15%">Email</th>
+            <th style="width: 10%">Phone</th>
+            <th style="width: 15%">Url</th>
+            <th style="width: 5%">Setpoint</th>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <div class="" id="low-stock-list">
+        <h5 style="color: red;">List of Items Low Stock</h5>
+        <table style="width: 100%;" id="table-warn-item">
+          <tr>
+            <th style="width: 30%;">Name</th>
+            <th style="width: 5%">Stock</th>
+            <th style="width: 10%">Type</th>
+            <th style="width: 20%">Supplier</th>
+            <th style="width: 15%">Email</th>
+            <th style="width: 10%">Phone</th>
+            <th style="width: 15%">Url</th>
+            <th style="width: 5%">Setpoint</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous">
+    </script>
+
+    <script src="InventoryProgram.js"></script>
+  </body>
+</html>
