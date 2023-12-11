@@ -130,7 +130,7 @@ getAllStorage()
     .catch(() => {
         console.log(`fail to get item from local storage.`);
     })
-    .then(()=>{warningItem()})
+    .finally(()=>{warningItem()})
  
 getAllStorage()
 
