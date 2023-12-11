@@ -167,6 +167,7 @@ const buttonSelect = function(){
 }
 const boxSelect = function(){
     $(this).next().next().toggleClass('hidden')
+    $(this).next().next().val('')
 }
 
 $btnAddItemEl.on('click',buttonSelect)
